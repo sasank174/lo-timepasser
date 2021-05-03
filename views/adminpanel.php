@@ -12,5 +12,20 @@ if(isset($_GET['delete'])) {
     header("Location: adminpanel.php");
 }
 
+if(isset($_GET['analysis'])) {
+    $x = $_GET["analysis"];
+    $query = "SELECT * FROM time WHERE username = '$x'";
+    $result = mysqli_query($con,$query);
+    $chart_data = '';
+    
+    while ($row = mysqli_fetch_array($result)) {
+        $ti = $row["time"];
+        $da = $row["date"];
+        $chart_data .="{date:'". $da ."',time:". $ti ."},";
+    }
+}
+
+
+
 
 ?>

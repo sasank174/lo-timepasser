@@ -48,7 +48,28 @@ require "views/home.php";
 
 
   <div class="ads">
-    <img src="public/images/ads/ads.jpg" height="100%" alt="no image">
+    <h4>Trending</h4>
+    <div class="trends">
+      <?php
+      $query = mysqli_query($con, "SELECT * FROM trends ORDER BY hits DESC LIMIT 9");
+
+      foreach ($query as $row) {
+
+        $word = $row['title'];
+        $word_dot = strlen($word) >= 14 ? "..." : "";
+
+        $trimmed_word = str_split($word, 14);
+        $trimmed_word = $trimmed_word[0];
+
+        echo "<p>";
+        echo $trimmed_word . $word_dot;
+        echo "</p>";
+
+
+      }
+
+      ?>
+    </div>
   </div>
   <div class="postupload" id="open">
     <div class="inputBox">
@@ -88,9 +109,9 @@ require "views/home.php";
             <div id="livesearch"></div>
           </div>
         </form>
-        <!-- <iframe src='search.php'></iframe> -->
       </div>
       <div class="list">
+        <h2 style="text-align: center;padding-top:10px;">My Friends List</h2>
         <?php
                 foreach ($profiledetails as $value) {
                     $frienddetails = mysqli_query($con,"SELECT * FROM users WHERE username='". $value ."'");
@@ -119,7 +140,6 @@ require "views/home.php";
       }
     </script>
     <?php
-
   $str = "";
   $data_query = mysqli_query($con, "SELECT * FROM posts ORDER BY id DESC");
 
@@ -158,6 +178,8 @@ require "views/home.php";
   echo $str;
 
  ?>
+
+
   </section>
   <script>
     function mFunction() {

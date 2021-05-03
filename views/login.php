@@ -14,7 +14,7 @@ if (isset($_POST["login"])) {
     // ================validate================
 
     $check = mysqli_query($con,"SELECT * from users WHERE username='$username'");
-
+    
     if (mysqli_num_rows($check) != 1) {
         array_push($error_array,"username");
     }else {
@@ -24,6 +24,19 @@ if (isset($_POST["login"])) {
         }else {
             array_push($error_array,"sucess");
             $_SESSION["username"] = $data["username"];
+
+            $time1 = getdate();
+            $minuit1 = $time1["minutes"];
+            $_SESSION["minuit1"] = $minuit1;
+            $date = $time1["month"]."/".$time1["mday"]."/".$time1["year"];
+            $_SESSION["date"] = $date;
+
+            $query = mysqli_query($con,"SELECT * FROM time WHERE username='$username' AND date='$date'");
+
+            if(mysqli_num_rows($query) == 0){
+                $query = mysqli_query($con,"INSERT INTO time VALUES ('','$username','$date','0')");
+            }
+            
             header("Location: /osp");
         }
     

@@ -38,3 +38,12 @@ td img{
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.fa-chart-line{
+    font-size: 30px;
+}
+
+.fa-images{
+    font-size: 30px;
+    margin-left: 20px;
+}

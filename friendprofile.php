@@ -72,25 +72,52 @@ require "views/friendprofile.php";
     <a href="feedback.php">Feedback</a>
     <a href="profile.php">Profile</a>
   </header>
+  <!-- <div class='details'>
+      <h2>Username</h2>
+      
+      <h2>No of posts</h2>
+    </div> -->
 
 
   <?php
     if ($friendcount != 1) {
-      echo 
+      echo
       '<div class="accept">
       <form class="form" action="home.php" method="post">
       <h1>ADD FRIEND</h1>
       <button type="submit" name="accept">ADD</button>
       <a href="home.php">CANCLE</a>
-      </form>  
+      </form>
       </div>';
     }
-    
+
       ?>
 
-  <div class="ads">
-    <img src="public/images/ads/ads.jpg" height="100%" alt="no image">
-  </div>
+      <div class="ads">
+        <h4>Trending</h4>
+        <div class="trends">
+          <?php
+          $query = mysqli_query($con, "SELECT * FROM trends ORDER BY hits DESC LIMIT 9");
+
+          foreach ($query as $row) {
+
+            $word = $row['title'];
+            $word_dot = strlen($word) >= 14 ? "..." : "";
+
+            $trimmed_word = str_split($word, 14);
+            $trimmed_word = $trimmed_word[0];
+
+            echo "<p>";
+            echo $trimmed_word . $word_dot;
+            echo "</p>";
+
+
+          }
+
+          ?>
+        </div>
+      </div>
+      
   <div class="postupload" id="open">
     <div class="inputBox">
       <form action="home.php" method="post" enctype="multipart/form-data">
@@ -108,8 +135,8 @@ require "views/friendprofile.php";
 
   <div class="head">
     <div class="pic">
-      <img src="<?php echo $user["profilepic"] ?>" alt="noimage">
-      <a href="#" class="username"><?php echo $user["username"] ?></a>
+      <img src="<?php echo $user_pic1 ?>" alt="noimage">
+      <a href="#" class="username"><?php echo $user_name1 ?></a>
       <div class="dropdown" style="float:right;">
         <button class="dropbtn"><i class="fas fa-caret-down"></i></button>
         <div class="dropdown-content">
@@ -134,8 +161,9 @@ require "views/friendprofile.php";
         <!-- <iframe src='search.php'></iframe> -->
       </div>
       <div class="list">
+        <h2  style="text-align: center;padding-top:10px;"><?php echo $_GET['friendr']; ?> Friends List</h2>
         <?php
-                foreach ($profiledetails as $value) {
+                foreach ($profiledetails1 as $value) {
                     $frienddetails = mysqli_query($con,"SELECT * FROM users WHERE username='". $value ."'");
                     $friend = mysqli_fetch_array($frienddetails);
                     // print_r($friend);
@@ -161,10 +189,11 @@ require "views/friendprofile.php";
         }
       }
     </script>
+
     <?php
 
   $str = "";
-  $data_query = mysqli_query($con, "SELECT * FROM posts ORDER BY id DESC");
+  $data_query = mysqli_query($con, "SELECT * FROM posts WHERE username='". $_GET['friendr'] ."' ORDER BY id DESC");
 
     while($row = mysqli_fetch_array($data_query)) {
       $id = $row['id'];
@@ -176,7 +205,7 @@ require "views/friendprofile.php";
       $frienddetails = mysqli_query($con,"SELECT friends FROM users WHERE username='$temp'");
       $friend = mysqli_fetch_array($frienddetails);
 
-      if((strstr($friend['friends'], $user_name) || $user_name == $temp )) {
+      if((strstr($friend['friends'], $user_name) )) {
 
         $friendimg = mysqli_query($con,"SELECT * FROM users WHERE username='$user_name'");
         $friendim = mysqli_fetch_array($friendimg);

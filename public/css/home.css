@@ -229,9 +229,21 @@ header .logo {
   max-height: 100vh;
   overflow: hidden;
   display: inline;
-  background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.2));
+  background: linear-gradient(to bottom, rgb(128, 45, 45), rgba(57, 85, 146, 0.2));
   width: 15%;
+  height: 100vh;
   z-index: 1;
+  animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+      filter: hue-rotate(0deg);
+  }
+
+  100% {
+      filter: hue-rotate(360deg);
+  }
 }
 
 section {
@@ -475,3 +487,44 @@ textarea {
   cursor: pointer;
 }
 
+
+/* .details{
+  position: fixed;
+  bottom: 50px;
+  width: 250px;
+  background: white;
+  color: #666;
+  margin: 20px 10px 30px 10px;
+  padding: 20px;
+  border-radius: 20px;
+  z-index: 100000;
+} */
+
+.ads h4{
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 35px;
+  font-family: serif;
+  color: rgb(255, 255, 255);
+  letter-spacing: 3px;
+}
+
+.trends{
+  margin-top: 20px;
+}
+
+.trends p{
+  font-family: sans-serif;
+  text-align: center;
+  line-height: 2em;
+  font-size: 25px;
+  padding: 0 10px;
+  text-transform: uppercase;
+  color: rgb(209, 191, 191);
+  transition: .5s all;
+}
+
+.trends p:hover{
+  color: rgb(42, 209, 153);
+  font-size: 40px;
+}
