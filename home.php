@@ -116,29 +116,19 @@ require "views/home.php";
                 foreach ($profiledetails as $value) {
                     $frienddetails = mysqli_query($con,"SELECT * FROM users WHERE username='". $value ."'");
                     $friend = mysqli_fetch_array($frienddetails);
-                    // print_r($friend);
                     $link = 'http://localhost/osp/friendprofile.php?friendr='. $friend["username"] .'';
-                    echo "<div class='listitem'><img src='". $friend["profilepic"] ."' alt='no image'><a href='$link'>". $friend["username"] ."</a></div>";
+                    $link2 = 'home.php?remove='. $friend["username"] .'';
+                    echo "<div class='listitem'>
+                    <img src='". $friend["profilepic"] ."' alt='no image'>
+                    <a href='$link'>". $friend["username"] ."</a>
+                    <a href='$link2'><i class='fas fa-user-minus'></i></a>
+                    </div>";
                 }
             ?>
       </div>
     </div>
   </div>
   <section>
-    <script>
-      function toggle <?php echo $id; ?> () {
-
-        var target = $(event.target);
-        if (!target.is("a")) {
-          var element = document.getElementById("toggleComment<?php echo $id; ?>");
-
-          if (element.style.display == "block")
-            element.style.display = "none";
-          else
-            element.style.display = "block";
-        }
-      }
-    </script>
     <?php
   $str = "";
   $data_query = mysqli_query($con, "SELECT * FROM posts ORDER BY id DESC");

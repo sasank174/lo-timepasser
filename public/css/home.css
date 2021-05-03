@@ -330,13 +330,14 @@ body::-webkit-scrollbar {
   color: black;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.5);
+  /* background: rgb(74, 145, 150); */
 }
 
 .comment h3 {
   float: left;
 }
 
-.comment textarea {
+textarea {
   width: 100%;
   min-height: 70px;
   resize: none;

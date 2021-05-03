@@ -17,6 +17,22 @@ if (isset($_POST["accept"])) {
     header("refresh:1");
 }
 
+if (isset($_GET["remove"])) {
+  $x3 = $_GET["remove"];
+  $str = $user["friends"];
+  if ($x3 == $_SESSION['username']) {
+    $updated = preg_replace("/$x3,/", "", $str);
+    $query = mysqli_query($con,"UPDATE users set friends='$updated' WHERE username='". $_SESSION['username'] ."'");
+  }else{
+    $updated = preg_replace("/,$x3/", "", $str);
+    $query = mysqli_query($con,"UPDATE users set friends='$updated' WHERE username='". $_SESSION['username'] ."'");
+  }
+  
+  header("Location: home.php");
+}
+
+
+
 
 if (isset($_POST["post"])) {
     $username = $user["username"];

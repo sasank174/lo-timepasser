@@ -41,13 +41,39 @@ require "views/friendprofile.php";
       justify-content: center;
       width: 100%;
       height: 100vh;
-      background: white;
+      background: rgb(225, 225, 225,0.7);
+      backdrop-filter: blur( 6.0px );
+      -webkit-backdrop-filter: blur( 6.0px );
       z-index: 1000;
     }
 
     .accept .form {
-      background: yellow;
       padding: 30px;
+      /* background: rgb(94, 177, 224,0.8); */
+      background: rgb(150, 141, 141,0.8);
+      box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+      backdrop-filter: blur( 6.0px );
+      -webkit-backdrop-filter: blur( 6.0px );
+      border-radius: 10px;
+      border: 1px solid rgba( 255, 255, 255, 0.18 );
+      transition: 0.5s all;
+    }
+
+    .accept .form:hover {
+      background: rgb(74, 145, 150);
+    }
+    
+    .accept h1{
+      font-family: serif;
+      font-size: 50px;
+      margin-bottom: 30px;
+      /* color: #666; */
+      color: black;
+      transition: 0.5s all;
+    }
+    .accept .form:hover h1{
+      color: white;
+      letter-spacing: 2px;
     }
 
     .accept .form a,
@@ -58,7 +84,20 @@ require "views/friendprofile.php";
       text-align: center;
       background: #666;
       color: white;
+      padding: 20px;
+      border-radius: 20px;
+      border: none;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: 3px;
       margin-top: 10px;
+      transition: 0.5s all;
+    }
+    
+    .accept .form a:hover,button:hover{
+      letter-spacing: 5px;
+      background: white;
+      color: #666;
     }
   </style>
 </head>
@@ -85,8 +124,8 @@ require "views/friendprofile.php";
       '<div class="accept">
       <form class="form" action="home.php" method="post">
       <h1>ADD FRIEND</h1>
-      <button type="submit" name="accept">ADD</button>
-      <a href="home.php">CANCLE</a>
+      <button type="submit" name="accept">ADD <i class="fas fa-user-plus"></i></button>
+      <a href="home.php">CANCLE  <i class="fas fa-user-times"></i></i></a>
       </form>
       </div>';
     }

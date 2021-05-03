@@ -3,7 +3,7 @@
 if (isset($_SESSION["aname"])) {
     $userdetails = mysqli_query($con,"SELECT * FROM users");
 }else {
-    header("Location: login.php");
+    header("Location: admin.php");
 }
 
 if(isset($_GET['delete'])) {

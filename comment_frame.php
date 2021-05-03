@@ -54,8 +54,8 @@ require "views/home.php";
            background: rgba(255, 255, 255, 0.2);
            border: 1px solid rgba(0, 0, 0, 0.5);
            ">
-     		<textarea name="post_body"></textarea>
-     	</form><br><hr>
+     		<textarea name="post_body" style="height:90px;"></textarea>
+     	</form><br>
 
       <!-- Load comments -->
       <?php
@@ -73,9 +73,7 @@ require "views/home.php";
           $removed = $comment['removed'];
           ?>
           <div class="comment_section">
-            <h1> <?php echo $posted_by?></h1>
-            <h3><?php echo $comment_body?></h3>
-    				<hr>
+            <h1 style="color:blue"> <?php echo $posted_by?>  <span style="font-size: 20px;color:black">:<?php echo $comment_body?></span</h1>
     			</div>
           <?php
 

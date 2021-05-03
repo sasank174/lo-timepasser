@@ -67,15 +67,44 @@ require "views/adminpanel.php";
     <?php
     if(isset($_GET['posts'])) {
         $x = $_GET["posts"];
+        $str = "";
+        $data_query = mysqli_query($con, "SELECT * FROM posts WHERE username='". $x ."' ORDER BY id DESC");
+        while($row = mysqli_fetch_array($data_query)) {
+            $id = $row['id'];
+            $post_pic = $row['post'];
+            $user_name = $row['username'];
+            $date_time = $row['time'];
+            $post_text = $row['text'];
+            
+            $frienddetails = mysqli_query($con,"SELECT friends FROM users WHERE username='$x'");
+            $friend = mysqli_fetch_array($frienddetails);
+            
+            if((strstr($friend['friends'], $user_name) )) {
+                $friendimg = mysqli_query($con,"SELECT * FROM users WHERE username='$user_name'");
+                $friendim = mysqli_fetch_array($friendimg);
+                
+                $str .= "
+                <div class='post'>
+                <h1><img id='xxx' src='".$friendim['profilepic']."' alt='no image'> $user_name : $post_text </h1></br>
+                <img src='$post_pic' alt='no image'></br>
+                <div class='post_comment'>
+                <iframe src='comment_framea.php?post_id=$id' class='comment'></iframe>
+                </div>
+                </div>
+                </div>
+                ";
+
+      }
+    }
+
+
+  echo $str;
     }
     ?>
     </div>
 
 
     <div id="myfirstchart" style="height: 250px;"></div>
-    <div>
-
-    </div>
     <script>
         new Morris.Bar({
             element: 'myfirstchart',
