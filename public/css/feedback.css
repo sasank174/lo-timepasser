@@ -210,7 +210,7 @@ section .color:nth-child(3){
 }
 
 
-.form .inputBox h1,h3,input{
+.form .inputBox h1,input{
     width: 100%;
     border: none;
     outline: none;

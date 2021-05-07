@@ -39,7 +39,16 @@ $sucess = "";
 
 if (isset($_POST["post"])) {
     $username = $user["username"];
-    $target = "public/images/posts/".basename($_FILES['image']['name']);
+    $fi = new FilesystemIterator("public/images/posts", FilesystemIterator::SKIP_DOTS);
+    $c = iterator_count($fi)+1;
+
+    $temp = explode(".", $_FILES['image']['name']);
+    $newfilename = $user["username"].$c. '.' . end($temp);
+    $target = "./public/images/posts/".$newfilename;
+
+    $image = $_FILES['image']['name'];
+
+    // $target = "public/images/posts/".basename($_FILES['image']['name']);
     $text = $_POST["text"];
     $time = date("Y-m-d H:i:s");
     $image = $_FILES['image']['name'];
@@ -82,15 +91,11 @@ if (isset($_POST["post"])) {
      youngest your yours z lol haha omg hey ill iframe wonder else like
            hate sleepy reason for some little yes bye choose";
 
-           //Convert stop words into array - split at white space
     $stopWords = preg_split("/[\s,]+/", $stopWords);
 
-    //Remove all punctionation
     $no_punctuation = preg_replace("/[^a-zA-Z 0-9]+/", "", $text);
 
-    //Predict whether user is posting a url. If so, do not check for trending words
     if(strpos($no_punctuation, "height") === false && strpos($no_punctuation, "width") === false){
-      //Convert users post (with punctuation removed) into array - split at white space
       $keywords = preg_split("/[\s,]+/", $no_punctuation);
 
       foreach($stopWords as $value) {

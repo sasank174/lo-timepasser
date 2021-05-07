@@ -35,7 +35,6 @@ if (isset($_POST["email"])) {
     $username = $user["username"];
     $query = mysqli_query($con,"UPDATE users SET email='$nemail' WHERE username='$username'");
     $_SESSION["changed"] = "Email";
-    // $sucess = "email changes sucessfully " . $username ;
     header("Location: profile.php");
 
 }
@@ -46,24 +45,26 @@ if (isset($_POST["password"])) {
     $npassword = md5($npassword);
     $query = mysqli_query($con,"UPDATE users SET password='$npassword' WHERE username='$username'");
     $_SESSION["changed"] = "Password";
-    // $sucess = "password changed sucessfully " . $username ;
     header("Location: profile.php");
 }
 
 if (isset($_POST["profilepic"])) {
     $username = $user["username"];
-    $target = "public/images/uprofile/".basename($_FILES['image']['name']);
+    
+    $fi = new FilesystemIterator("public/images/uprofile", FilesystemIterator::SKIP_DOTS);
+    $c = iterator_count($fi)+1;
+    
+    $temp = explode(".", $_FILES['image']['name']);
+    $newfilename = $user["username"].$c. '.' . end($temp);
+    $target = "./public/images/uprofile/".$newfilename;
 
     $image = $_FILES['image']['name'];
     $query = mysqli_query($con,"UPDATE users SET profilepic='$target' WHERE username='$username'");
 
-
-    if(move_uploaded_file($_FILES['image']['tmp_name'],$target)){
+    if(move_uploaded_file($_FILES["image"]["tmp_name"], $target)){
         $_SESSION["changed"] = "Image";
-        // $sucess = "image changed sucessfully " . $username ;
         header("Location: profile.php");
     }else{
-        // $sucess = "wrong changed sucessfully " . $username ;
         header("Location: profile.php");
     }
 }

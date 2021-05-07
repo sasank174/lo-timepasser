@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ABOUT PAGE</title>
+    <link rel="stylesheet" href="public/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -20,10 +21,6 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
-
-        /* body { */
-        /* background: black; */
-        /* } */
 
         .our-team {
             position: relative;
@@ -227,74 +224,6 @@
             background: #666;
             color: white;
         }
-        
-        
-
-        /* .active {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-        } */
-
-        /* .active:hover {
-            color: white;
-        } */
-
-
-        /* 
-        .header .logo {
-            position: relative;
-            font-size: 2em;
-            color: rgb(255, 255, 255);
-            background-color: rgb(36, 32, 32);
-            border-radius: 20px;
-            padding: 15px;
-            text-transform: uppercase;
-            font-weight: 700;
-            text-decoration: none;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        .header {
-            position: relative;
-            z-index: 10;
-            top: 0;
-            left: 0;
-            background: white;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            width: 100%;
-        }
-
-        .header a {
-            text-decoration: none;
-            font-size: 30px;
-            display: inline;
-            line-height: 3em;
-            padding: 20px;
-            color: #666;
-            align-items: center;
-            width: 20%;
-            margin-left: 60px;
-            border-radius: 20px;
-        }
-
-        .header a:hover {
-            text-decoration: underline;
-            color: #666;
-        }
-
-        .header .logos {
-            background: rgba(0, 0, 0, 0.1);
-            border: 3px solid rgba(0, 0, 0, 0.3);
-            color: black;
-            font-weight: 900;
-            font-size: 30px;
-            padding: 20px;
-            margin-left: 10px;
-            vertical-align: middle;
-            border-radius: 50%;
-        }
-         */
-
     </style>
 
 
@@ -309,6 +238,20 @@
         <a href="feedback.php">Feedback</a>
         <a href="profile.php">Profile</a>
     </div>
+
+    <div class="alert">
+		<h3>Battery</h3>
+		<div class="batteryshape">
+			<div class="level">
+				<div class="percentage"></div>
+			</div>
+		</div>
+		<div class="percent">50%</div>
+		<a href="logout.php">Logout</a>
+	</div>
+	<script src="public/js/main.js"></script>
+
+
     <section>
         <br><br><br><br>
         <div class="container">

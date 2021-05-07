@@ -86,7 +86,7 @@ require "views/adminpanel.php";
                 $delete1 = "adminpanel.php?delete1=$id";                
                 $str .= "
                 <div class='post'>
-                <h1><img id='xxx' src='".$friendim['profilepic']."' alt='no image'> $user_name : $post_text  <table><tr><a href='".$delete1."'><i class='fas fa-trash-alt'></i></a></tr></table> </h1></br>
+                <h1 class='posttext'><img id='xxx' src='".$friendim['profilepic']."' alt='no image'> $user_name : <span>$post_text</span><table><tr><a class='delete' href='".$delete1."'><i class='fas fa-trash-alt'></i></a></tr></table> </h1></br>
                 <img src='$post_pic' alt='no image'></br>
                 <div class='post_comment'>
                 <iframe src='comment_framea.php?post_id=$id' class='comment'></iframe>

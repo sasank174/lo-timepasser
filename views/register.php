@@ -28,7 +28,7 @@ if (isset($_POST["register"])) {
         array_push($error_array,"username");
     }
 
-    if (str_word_count($username)!=1 && strlen($username)>5) {
+    if (str_word_count($username)!=1 || strlen($username)>5) {
         array_push($error_array,"word");
     }
 

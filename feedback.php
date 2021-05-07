@@ -12,6 +12,7 @@ require "views/feedback.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>feedback</title>
     <link rel="stylesheet" href="public/css/feedback.css">
+    <link rel="stylesheet" href="public/css/main.css">
 </head>
 
 <body>
@@ -22,6 +23,18 @@ require "views/feedback.php";
         <a href="feedback.php" class="active">Feedback</a>
         <a href="profile.php">Profile</a>
     </header>
+
+    <div class="alert">
+		<h3>Battery</h3>
+		<div class="batteryshape">
+			<div class="level">
+				<div class="percentage"></div>
+			</div>
+		</div>
+		<div class="percent">50%</div>
+		<a href="logout.php">Logout</a>
+	</div>
+	<script src="public/js/main.js"></script>
 
     <section>
         <!-- <div class="color"></div>
