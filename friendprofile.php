@@ -77,7 +77,7 @@ require "views/friendprofile.php";
     }
 
     .accept .form a,
-    button {
+    .bu {
       display: block;
       width: 100%;
       text-decoration: none;
@@ -94,7 +94,7 @@ require "views/friendprofile.php";
       transition: 0.5s all;
     }
     
-    .accept .form a:hover,button:hover{
+    .accept .form a:hover,.bu:hover{
       letter-spacing: 5px;
       background: white;
       color: #666;
@@ -111,20 +111,13 @@ require "views/friendprofile.php";
     <a href="feedback.php">Feedback</a>
     <a href="profile.php">Profile</a>
   </header>
-  <!-- <div class='details'>
-      <h2>Username</h2>
-      
-      <h2>No of posts</h2>
-    </div> -->
-
-
   <?php
     if ($friendcount != 1) {
       echo
       '<div class="accept">
       <form class="form" action="home.php" method="post">
       <h1>ADD FRIEND</h1>
-      <button type="submit" name="accept">ADD <i class="fas fa-user-plus"></i></button>
+      <button class="bu" type="submit" name="accept">ADD <i class="fas fa-user-plus"></i></button>
       <a href="home.php">CANCLE  <i class="fas fa-user-times"></i></i></a>
       </form>
       </div>';
@@ -166,16 +159,16 @@ require "views/friendprofile.php";
         <textarea name="text" placeholder="write your post...." required></textarea>
         <p><?php echo $sucess ?></p>
       </form>
-      <button onclick='m1Function()'><i class='far fa-times-circle'></i></button>
+      <button class="button" onclick='m1Function()'><i class='far fa-times-circle'></i></button>
     </div>
   </div>
 
 
 
   <div class="head">
-    <div class="pic">
-      <img src="<?php echo $user_pic1 ?>" alt="noimage">
-      <a href="#" class="username"><?php echo $user_name1 ?></a>
+  <div class="pic">
+      <img src="<?php echo $user["profilepic"] ?>" alt="noimage">
+      <a href="#" class="username"><?php echo $user["username"] ?></a>
       <div class="dropdown" style="float:right;">
         <button class="dropbtn"><i class="fas fa-caret-down"></i></button>
         <div class="dropdown-content">
@@ -206,7 +199,7 @@ require "views/friendprofile.php";
                     $frienddetails = mysqli_query($con,"SELECT * FROM users WHERE username='". $value ."'");
                     $friend = mysqli_fetch_array($frienddetails);
                     // print_r($friend);
-                    $link = 'http://localhost/osp/friendprofile.php?friendr='. $friend["username"] .'';
+                    $link = 'friendprofile.php?friendr='. $friend["username"] .'';
                     echo "<div class='listitem'><img src='". $friend["profilepic"] ."' alt='no image'><a href='$link'>". $friend["username"] ."</a></div>";
                 }
             ?>

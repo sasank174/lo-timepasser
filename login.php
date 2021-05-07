@@ -43,8 +43,12 @@ require "views/login.php";
                             <input type="submit" name="login" value="Login">
                         </div>
                         <p class="forgot">
+                            <?php if (in_array("verified",$error_array)) echo "verification sucessfull";
+                            elseif (in_array("inurl",$error_array)) echo "invalid url";?>
+
                             <?php if (in_array("username",$error_array)) echo "invalid username";
                             elseif (in_array("password",$error_array)) echo "incorrect password";
+                            elseif (in_array("url",$error_array)) echo "not verified";
                             elseif (in_array("sucess",$error_array)) echo "logged sucessfully";?>
                         </p>
                         <p class="forgot">Forgot Password ?<a href="password.php">Click here</a></p>

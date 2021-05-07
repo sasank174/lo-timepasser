@@ -39,18 +39,21 @@ require "views/password.php";
                                 required>
                         </div>
                         <div class="inputBox">
-                            <input type="password" name="password" placeholder="passowrd" required>
+                            <input type="password" name="password" placeholder="old passowrd" required>
                         </div>
                         <div class="inputBox">
-                            <input type="password" name="password2" placeholder="conform passowrd" required>
+                            <input type="password" name="password2" placeholder="new passowrd" required>
                         </div>
                         <div class="inputBox">
                             <input type="submit" name="passwordchange" value="Change">
                         </div>
                         <p class="forgot">
+                            <?php if (in_array("verified",$error_array)) echo "verification sucessfull";
+                            elseif (in_array("inurl",$error_array)) echo "invalid url";?>
+                            
                             <?php if (in_array("username",$error_array)) echo "invalid username";
-                            elseif (in_array("passwordnomatch",$error_array)) echo "passwords didn't match";
-                            elseif (in_array("sucess",$error_array)) echo "changed sucessfully";?>
+                            elseif (in_array("passwordnomatch",$error_array)) echo "incorrect password";
+                            elseif (in_array("sucess",$error_array)) echo "verify mail";?>
                         </p>
                         <p class="forgot">Know the Password ?<a href="login.php">Sign in</a></p>
                         <p class="forgot">Dont have an account ?<a href="register.php">Sign up</a></p>

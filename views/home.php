@@ -12,8 +12,15 @@ $sucess = "";
 
 if (isset($_POST["accept"])) {
     $x3 = $_SESSION["friend"];
-    $friendlist = $user["friends"] . ",$x3";
-    $query = mysqli_query($con,"UPDATE users set friends='$friendlist' WHERE username='". $_SESSION['username'] ."'");
+
+    $str = $user["friends"];
+    if ($x3 == $_SESSION['username']) {
+		$updated = "$x3," . $user["friends"];
+		$query = mysqli_query($con,"UPDATE users set friends='$updated' WHERE username='". $_SESSION['username'] ."'");
+    }else{
+      $updated = $user["friends"] . ",$x3";
+      $query = mysqli_query($con,"UPDATE users set friends='$updated' WHERE username='". $_SESSION['username'] ."'");
+    }
     header("refresh:1");
 }
 

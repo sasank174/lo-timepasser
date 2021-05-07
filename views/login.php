@@ -5,6 +5,20 @@ $password = "";
 $error_array = array();
 // ===============check post=================
 
+if (isset($_GET["userd"]) ) {
+    $userd = $_GET["userd"];
+    $pass = $_GET["pass"];
+    $query = mysqli_query($con,"SELECT * FROM users WHERE username='$userd' AND tpass='$pass'");
+    if (mysqli_num_rows($query) == 1) {
+        
+        $query = mysqli_query($con,"UPDATE users SET password='$pass',tpass=',',temp='yes' WHERE username='$userd'");
+
+        array_push($error_array,"verified");
+    }else{
+        array_push($error_array,"inurl");
+    }
+}
+
 if (isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = md5($_POST["password"]);
@@ -13,7 +27,7 @@ if (isset($_POST["login"])) {
 
     // ================validate================
 
-    $check = mysqli_query($con,"SELECT * from users WHERE username='$username'");
+    $check = mysqli_query($con,"SELECT * FROM users WHERE username='$username'");
     
     if (mysqli_num_rows($check) != 1) {
         array_push($error_array,"username");
@@ -21,6 +35,8 @@ if (isset($_POST["login"])) {
         $data = mysqli_fetch_array($check);
         if ($password != $data["password"]) {
             array_push($error_array,"password");
+        }elseif("yes" != $data["temp"]){
+            array_push($error_array,"url");
         }else {
             array_push($error_array,"sucess");
             $_SESSION["username"] = $data["username"];

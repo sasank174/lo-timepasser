@@ -48,7 +48,7 @@ require "views/register.php";
                         </div>
                         <p class="forgot">
                             <?php if (in_array("email",$error_array)) echo "email already in use";
-                            elseif (in_array("word",$error_array)) echo "username should be only single word";
+                            elseif (in_array("word",$error_array)) echo "username contains one word with max 5 letters";
                             elseif (in_array("username",$error_array)) echo "username already existed";
                             elseif (in_array("password",$error_array)) echo "password must be b/w 5 to 25";
                             elseif (in_array("sucess",$error_array)) echo "registered sucessfully";?>

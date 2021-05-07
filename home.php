@@ -80,7 +80,7 @@ require "views/home.php";
         <textarea name="text" placeholder="write your post...." required></textarea>
         <p><?php echo $sucess ?></p>
       </form>
-      <button onclick='m1Function()'><i class='far fa-times-circle'></i></button>
+      <button class="button" onclick='m1Function()'><i class='far fa-times-circle'></i></button>
     </div>
   </div>
 
@@ -116,7 +116,7 @@ require "views/home.php";
                 foreach ($profiledetails as $value) {
                     $frienddetails = mysqli_query($con,"SELECT * FROM users WHERE username='". $value ."'");
                     $friend = mysqli_fetch_array($frienddetails);
-                    $link = 'http://localhost/osp/friendprofile.php?friendr='. $friend["username"] .'';
+                    $link = 'friendprofile.php?friendr='. $friend["username"] .'';
                     $link2 = 'home.php?remove='. $friend["username"] .'';
                     echo "<div class='listitem'>
                     <img src='". $friend["profilepic"] ."' alt='no image'>

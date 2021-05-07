@@ -89,9 +89,6 @@ require "views/profile.php";
         <h1 class="xxyyzz">POSTS</h1>
 
 
-
-
-
         <?php
 
   $str = ""; //String to return
@@ -110,10 +107,10 @@ require "views/profile.php";
       if((strstr($temp, $user_name) )) {
         $friendimg = mysqli_query($con,"SELECT * FROM users WHERE username='$user_name'");
         $friendim = mysqli_fetch_array($friendimg);
-
+        $delete = "http://localhost/osp/profile.php?delete=$id";
         $str .= "
         <div class='post'>
-            <h1><img id='xxx' src='".$friendim['profilepic']."' alt='no image'> $user_name : $post_text </h1></br>
+            <h1><img id='xxx' src='".$friendim['profilepic']."' alt='no image'> $user_name : $post_text  <table><tr><a href='".$delete."'><i class='fas fa-trash-alt'></i></a></tr></table>  </h1></br>
             <img src='$post_pic' alt='no image'></br>
             <div class='post_comment'>
               <iframe src='comment_frame.php?post_id=$id' class='comment'></iframe>

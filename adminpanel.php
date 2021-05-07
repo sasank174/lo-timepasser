@@ -27,6 +27,7 @@ require "views/adminpanel.php";
             });
         });
     </script>
+    <a class="logout" href="admin.php">Logout</a>
     <h1 id="flip">USERS</h1>
     <div class="users">
 
@@ -44,9 +45,9 @@ require "views/adminpanel.php";
             <?php
             while($row = mysqli_fetch_array($userdetails)){
                 $username = $row['username'];
-                $delete = "http://localhost/osp/adminpanel.php?delete=$username";
-                $analysis = "http://localhost/osp/adminpanel.php?analysis=$username";
-                $posts = "http://localhost/osp/adminpanel.php?posts=$username";
+                $delete = "adminpanel.php?delete=$username";
+                $analysis = "adminpanel.php?analysis=$username";
+                $posts = "adminpanel.php?posts=$username";
                 echo"
                 <tr>
                     <td><img src='".$row["profilepic"]."' alt='img'></td>
@@ -56,9 +57,9 @@ require "views/adminpanel.php";
                     <td><a href='".$analysis."'><i class='fas fa-chart-line'></i></a></td>
                     <td>".$row['friends']."</td>
                     <td><a href='".$delete."'><i class='fas fa-trash-alt'></i></a></td>
-                    
+
                     </tr>";}
-                    
+
                     ?>
         </table>
     </div>
@@ -75,17 +76,17 @@ require "views/adminpanel.php";
             $user_name = $row['username'];
             $date_time = $row['time'];
             $post_text = $row['text'];
-            
+
             $frienddetails = mysqli_query($con,"SELECT friends FROM users WHERE username='$x'");
             $friend = mysqli_fetch_array($frienddetails);
-            
+
             if((strstr($friend['friends'], $user_name) )) {
                 $friendimg = mysqli_query($con,"SELECT * FROM users WHERE username='$user_name'");
                 $friendim = mysqli_fetch_array($friendimg);
-                
+                $delete1 = "adminpanel.php?delete1=$id";                
                 $str .= "
                 <div class='post'>
-                <h1><img id='xxx' src='".$friendim['profilepic']."' alt='no image'> $user_name : $post_text </h1></br>
+                <h1><img id='xxx' src='".$friendim['profilepic']."' alt='no image'> $user_name : $post_text  <table><tr><a href='".$delete1."'><i class='fas fa-trash-alt'></i></a></tr></table> </h1></br>
                 <img src='$post_pic' alt='no image'></br>
                 <div class='post_comment'>
                 <iframe src='comment_framea.php?post_id=$id' class='comment'></iframe>
