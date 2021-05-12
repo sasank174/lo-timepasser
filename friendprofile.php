@@ -17,6 +17,92 @@ require "views/friendprofile.php";
 	<script src="public/js/search.js" charset="utf-8"></script>
 	<title>Home</title>
 	<style>
+
+		.mystyle{
+			position: fixed;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100vh;
+			background: yellow;
+			z-index: 9999999;
+			background: rgba( 255, 255, 255, 0.75 );
+			box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+			backdrop-filter: blur( 4px );
+			-webkit-backdrop-filter: blur( 4px );
+			border-radius: 10px;
+			border: 1px solid rgba( 255, 255, 255, 0.18 );
+			transition: 1s all;
+		}
+
+		.mystyle h1{
+			font-weight: 900;
+			color: #666;
+			font-size: 8vw;
+			white-space: nowrap;
+		}
+
+		#shareoptions{
+			position: relative;
+			display: flex;
+			justify-content: space-around;
+		}
+		
+		#shareoptions a,i{
+			vertical-align: middle;
+		}
+		
+		.dropbtn {
+			/* background-color: #4CAF50; */
+			color: white;
+			padding: 16px;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+		}
+
+		.dropdown {
+			position: relative;
+			display: inline-block;
+		}
+
+		.dropdown-content {
+			white-space: nowrap;
+			overflow: hidden;
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			min-width: 160px;
+			width: 250px;
+			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+			z-index: 1;
+		}
+
+		.dropdown-content p {
+			display: inline;
+			font-size: 20px;
+			color: black;
+			padding: 10px 12px;
+			text-decoration: none;
+			display: block;
+		}
+
+		.dropdown-content p:hover {
+			background-color: #f1f1f1
+		}
+
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+
+		.dropdown:hover .dropbtn {
+			color: #666;
+			/* background-color: #3e8e41; */
+		}
+
+
+
 		#xxx {
 			vertical-align: middle;
 			width: 50px;
@@ -40,6 +126,7 @@ require "views/friendprofile.php";
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			flex-direction: column;
 			width: 100%;
 			height: 100vh;
 			background: rgb(225, 225, 225, 0.7);
@@ -50,7 +137,6 @@ require "views/friendprofile.php";
 
 		.accept .form {
 			padding: 30px;
-			/* background: rgb(94, 177, 224,0.8); */
 			background: rgb(150, 141, 141, 0.8);
 			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 			backdrop-filter: blur(6.0px);
@@ -68,7 +154,6 @@ require "views/friendprofile.php";
 			font-family: serif;
 			font-size: 50px;
 			margin-bottom: 30px;
-			/* color: #666; */
 			color: black;
 			transition: 0.5s all;
 		}
@@ -102,10 +187,44 @@ require "views/friendprofile.php";
 			background: white;
 			color: #666;
 		}
+
+		.any1 {
+			width: 370px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: rgb(94, 177, 224, 0.8);
+			padding: 5px;
+			border-radius: 10px;
+		}
+
+		.any1 img {
+			position: relative;
+			width: 70px;
+			height: 70px;
+			border-radius: 50%;
+			vertical-align: middle;
+		}
+
+		.any1 a {
+			position: relative;
+			display: inline;
+			font-size: 40px;
+			text-decoration: none;
+			margin-left: 10px;
+			color: white;
+			padding: 16px;
+			font-weight: 900;
+			border: none;
+			cursor: pointer;
+		}
 	</style>
 </head>
 
 <body>
+	<div id="foo" style="display: none;">
+        <h1 id="dis">Copied to Clipboard</h1>
+    </div>
 
 	<header>
 		<a href="home.php" class="logo">LO</a>
@@ -131,10 +250,15 @@ require "views/friendprofile.php";
 
 
 	<?php
+	
     if ($friendcount != 1) {
 		echo
 		'<div class="accept">
-      	<form class="form" action="home.php" method="post">
+		<div class="any1">
+		<img src="'. $user_pic1 .'" alt="no image">
+		<a href="#">'. $user_name1 .'</a>
+		</div>
+		<form class="form" action="home.php" method="post">
       	<h1>ADD FRIEND</h1>
       	<button class="bu" type="submit" name="accept">ADD <i class="fas fa-user-plus"></i></button>
       	<a href="home.php">CANCLE  <i class="fas fa-user-times"></i></i></a>
@@ -212,7 +336,38 @@ require "views/friendprofile.php";
 				<!-- <iframe src='search.php'></iframe> -->
 			</div>
 			<div class="list">
-				<h2 style="text-align: center;padding-top:10px;"><?php echo $_GET['friendr']; ?> Friends List</h2>
+				<h2 style="text-align: center;padding-top:10px;"><?php echo $_GET['friendr']; ?> Friends 
+				<span class="dropdown">
+					<button class="dropbtn"><i class='far fa-share-square'></i></button>
+						<div class="dropdown-content">
+							<?php
+								$qr ='https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=http://localhost/osp/friendprofile.php?friendr='.$_GET["friendr"];
+								$share ='http://localhost/osp/friendprofile.php?friendr='.$_GET["friendr"];
+							?>
+							<p>
+								<img src="<?php echo $qr; ?>" width="200px" height="200px"></p>
+							<p id="shareoptions"><a><i onclick="copy();" class="far fa-copy"></i></a><a href="https://api.whatsapp.com/send?text=<?php echo $share; ?>"><i class="fab fa-whatsapp"></i></a></p>
+							<p id="copytext"><?php echo $share; ?></p>
+						</div>
+					</span>
+				</h2>
+				<script>
+				function copy() {
+					var inp = document.createElement('input');
+            		document.body.appendChild(inp)
+            		inp.value = document.getElementById("copytext").innerHTML;
+					var element = document.getElementById("foo");
+					setTimeout(function () {
+						element.classList.toggle("mystyle");
+					}, 000);
+            		setTimeout(function () {
+						element.classList.toggle("mystyle");
+					}, 2000);
+					inp.select();
+            		document.execCommand('copy', false);
+            		inp.remove();
+				}
+				</script>
 				<?php
                 foreach ($profiledetails1 as $value) {
                     $frienddetails = mysqli_query($con,"SELECT * FROM users WHERE username='". $value ."'");
@@ -225,6 +380,11 @@ require "views/friendprofile.php";
 			</div>
 		</div>
 	</div>
+
+	<script>
+
+
+	</script>
 	<section>
 		<script>
 			function toggle <?php echo $id; ?> () {

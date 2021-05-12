@@ -13,7 +13,7 @@ function change() {
         }
     })
 }
-setInterval(change, 5000);
+setInterval(change, 1000);
 
 // navigator.getBattery().then((battery) => {
 
