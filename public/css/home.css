@@ -158,7 +158,6 @@ header .logo {
 	border: none;
 	outline: none;
 	padding: 10px 20px;
-	/* border-radius: 35px 35px 0px 0; */
 	border-radius: 35px;
 	background: rgba(255, 255, 255, 0.2);
 	border: 1px solid rgba(255, 255, 255, 0.5);
@@ -190,7 +189,6 @@ header .logo {
 	border-radius: 20px;
 	background: rgba(0, 0, 0, 0.1);
 	box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.3);
-	/* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); */
 }
 
 .head .frinds .list .listitem {
@@ -331,17 +329,10 @@ body::-webkit-scrollbar {
 	color: black;
 	background: rgba(255, 255, 255, 0.2);
 	border: 1px solid rgba(0, 0, 0, 0.5);
-	/* background: rgb(74, 145, 150); */
 }
 
 .comment h3 {
 	float: left;
-}
-
-textarea {
-	width: 100%;
-	min-height: 70px;
-	resize: none;
 }
 
 .postupload {
@@ -362,7 +353,7 @@ textarea {
 	transform: translate(-50%, -50%);
 	background: rgba(255, 255, 255, 0.8);
 	color: #666;
-	padding: 50px;
+	padding: 20px;
 	border-radius: 20px;
 }
 
@@ -374,18 +365,26 @@ textarea {
 .postupload .inputBox h1::before {
 	content: '';
 	position: absolute;
-	top: 100px;
+	top: 60px;
 	width: 90px;
 	height: 5px;
 	background: #666;
 }
 
-.postupload .inputBox input {
-	width: 70%;
+.postupload .inputBox .popp {
+	display: flex;
+	justify-content: space-between;
+}
+
+.postupload .inputBox .popp textarea {
+	resize: none;
+	width: 100%;
+	margin: 20px;
 	border: none;
 	outline: none;
+	height: 200px;
 	padding: 10px 20px;
-	border-radius: 35px;
+	border-radius: 15px;
 	background: rgba(255, 255, 255, 0.2);
 	border: 1px solid rgba(255, 255, 255, 0.5);
 	border-right: 1px solid rgba(255, 255, 255, 0.2);
@@ -393,29 +392,35 @@ textarea {
 	font-size: 16px;
 	letter-spacing: 1px;
 	color: #666;
-	font-weight: 700;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-.postupload .inputBox input[type="submit"] {
-	background: #666;
+.postupload .inputBox .popp input[type="submit"] {
+	width: 100%;
+	border: none;
+	outline: none;
+	padding: 10px 20px;
+	border-radius: 35px;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	letter-spacing: 1px;
 	color: #fff;
-	max-width: 120px;
-	height: 42vh;
-	float: right;
+	background: #666;
+	max-width: 100px;
+	height: 200px;
 	cursor: pointer;
-	margin-bottom: 20px;
-	margin-left: 20px;
+	margin: 20px;
 	font-weight: 600;
 	display: block;
 	align-items: center;
 	box-shadow: 0px 10px 5px rgb(133, 128, 128);
-	transition: .9s all;
 	font-size: 22px;
+	transition: 1s all;
 }
 
-.postupload .inputBox input[type="submit"]:hover {
-	transform: translateY(20px);
+.postupload .inputBox .popp input[type="submit"]:hover {
+	transform: translateY(-10px);
 	background: rgba(255, 255, 255, 0.5);
 	color: #666;
 	font-size: 29px;
@@ -425,7 +430,7 @@ textarea {
 .username {
 	overflow: hidden;
 	display: inline-block;
-	max-width: 120px;
+	max-width: 100px;
 	vertical-align: middle;
 }
 
@@ -459,8 +464,6 @@ textarea {
 	border: none;
 }
 
-
-/* latest */
 .listitem1 {
 	position: relative;
 	width: 100%;
@@ -488,19 +491,6 @@ textarea {
 	border: none;
 	cursor: pointer;
 }
-
-
-/* .details{
-  position: fixed;
-  bottom: 50px;
-  width: 250px;
-  background: white;
-  color: #666;
-  margin: 20px 10px 30px 10px;
-  padding: 20px;
-  border-radius: 20px;
-  z-index: 100000;
-} */
 
 .ads h4 {
 	text-align: center;

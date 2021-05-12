@@ -13,7 +13,7 @@
 }
 
 .users {
-    /* display: none; */
+    display: none;
 }
 
 table {
@@ -132,20 +132,37 @@ tr:nth-child(even) {
     border-radius: 50%;
 }
 
-.logout {
-    position: fixed;
-    top: 0;
-    right: 100px;
-    display: inline;
-    /* background: #dddddd; */
+.abc{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.abc a {
     color: rgb(73, 73, 73);
     text-decoration: none;
-    padding: 20px;
+    padding: 10px;
     background: rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    font-size: 30px;
+    font-size: 25px;
+}
+
+
+#piechart{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    max-height: 320px;
+}
+
+#myfirstchart{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    max-height: 250px;
 }

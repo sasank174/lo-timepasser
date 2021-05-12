@@ -213,7 +213,7 @@ require "views/profile.php";
             <div class="edit" id="pro">
                 <form action="profile.php" method="post" enctype="multipart/form-data">
                     <h1>New Profile Pic</h1>
-                    <input type="file" name="image" placeholder="image" required>
+                    <input type="file" accept="image/*" name="image" placeholder="image" required>
                     <input type="submit" name="profilepic" value="Change">
                 </form>
             </div>

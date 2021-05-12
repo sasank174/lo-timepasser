@@ -41,6 +41,29 @@ if(isset($_GET['analysis'])) {
     }
 }
 
+if(isset($_GET['piechart'])) {
+    $information='';
+    
+    $query = "SELECT * FROM users";
+    $result = mysqli_query($con,$query);
+    while ($row = mysqli_fetch_array($result)) {
+
+        $user = $row["username"];
+
+        $result1 = mysqli_query($con,"SELECT * FROM time WHERE username = '". $user ."'");
+        // echo $user."---";
+        $totaltime=0;
+        
+        while ($row1 = mysqli_fetch_array($result1)) {
+            $totaltime = $totaltime + intval($row1["time"]);
+        }
+        // echo $totaltime."<br>";
+        $information .="['". $user ."',$totaltime],";
+
+    }
+    // echo $information;
+}
+
 
 
 

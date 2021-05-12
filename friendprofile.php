@@ -17,8 +17,7 @@ require "views/friendprofile.php";
 	<script src="public/js/search.js" charset="utf-8"></script>
 	<title>Home</title>
 	<style>
-
-		.mystyle{
+		.mystyle {
 			position: fixed;
 			display: flex;
 			justify-content: center;
@@ -27,32 +26,33 @@ require "views/friendprofile.php";
 			height: 100vh;
 			background: yellow;
 			z-index: 9999999;
-			background: rgba( 255, 255, 255, 0.75 );
-			box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-			backdrop-filter: blur( 4px );
-			-webkit-backdrop-filter: blur( 4px );
+			background: rgba(255, 255, 255, 0.75);
+			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+			backdrop-filter: blur(4px);
+			-webkit-backdrop-filter: blur(4px);
 			border-radius: 10px;
-			border: 1px solid rgba( 255, 255, 255, 0.18 );
+			border: 1px solid rgba(255, 255, 255, 0.18);
 			transition: 1s all;
 		}
 
-		.mystyle h1{
+		.mystyle h1 {
 			font-weight: 900;
 			color: #666;
 			font-size: 8vw;
 			white-space: nowrap;
 		}
 
-		#shareoptions{
+		#shareoptions {
 			position: relative;
 			display: flex;
 			justify-content: space-around;
 		}
-		
-		#shareoptions a,i{
+
+		#shareoptions a,
+		i {
 			vertical-align: middle;
 		}
-		
+
 		.dropbtn {
 			/* background-color: #4CAF50; */
 			color: white;
@@ -223,8 +223,8 @@ require "views/friendprofile.php";
 
 <body>
 	<div id="foo" style="display: none;">
-        <h1 id="dis">Copied to Clipboard</h1>
-    </div>
+		<h1 id="dis">Copied to Clipboard</h1>
+	</div>
 
 	<header>
 		<a href="home.php" class="logo">LO</a>
@@ -297,10 +297,21 @@ require "views/friendprofile.php";
 		<div class="inputBox">
 			<form action="home.php" method="post" enctype="multipart/form-data">
 				<h1>New Post</h1>
-				<input type="submit" name="post" value="Post">
-				<input type="file" name="image" placeholder="image" required>
-				<textarea name="text" placeholder="write your post...." required></textarea>
-				<p><?php echo $sucess ?></p>
+				<div>
+					<div>
+						<input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
+							style="display: none;" required>
+						<p id="no" style="text-align:center;"><img id="image"></p>
+					</div>
+					<p style="text-align:center;font-size:25px;font-weight:900"><label for="file"
+							class="forlable">UPLOAD IMAGE</label></p>
+				</div>
+
+				<div class="popp">
+					<textarea name="text" placeholder="write your post...." required></textarea>
+					<input type="submit" name="post" value="Post">
+				</div>
+
 			</form>
 			<button class="button" onclick='m1Function()'><i class='far fa-times-circle'></i></button>
 		</div>
@@ -336,9 +347,9 @@ require "views/friendprofile.php";
 				<!-- <iframe src='search.php'></iframe> -->
 			</div>
 			<div class="list">
-				<h2 style="text-align: center;padding-top:10px;"><?php echo $_GET['friendr']; ?> Friends 
-				<span class="dropdown">
-					<button class="dropbtn"><i class='far fa-share-square'></i></button>
+				<h2 style="text-align: center;padding-top:10px;"><?php echo $_GET['friendr']; ?> Friends
+					<span class="dropdown">
+						<button class="dropbtn"><i class='far fa-share-square'></i></button>
 						<div class="dropdown-content">
 							<?php
 								$qr ='https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=http://localhost/osp/friendprofile.php?friendr='.$_GET["friendr"];
@@ -346,33 +357,35 @@ require "views/friendprofile.php";
 							?>
 							<p>
 								<img src="<?php echo $qr; ?>" width="200px" height="200px"></p>
-							<p id="shareoptions"><a><i onclick="copy();" class="far fa-copy"></i></a><a href="https://api.whatsapp.com/send?text=<?php echo $share; ?>"><i class="fab fa-whatsapp"></i></a></p>
+							<p id="shareoptions"><a><i onclick="copy();" class="far fa-copy"></i></a><a
+									href="https://api.whatsapp.com/send?text=<?php echo $share; ?>"><i
+										class="fab fa-whatsapp"></i></a></p>
 							<p id="copytext"><?php echo $share; ?></p>
 						</div>
 					</span>
 				</h2>
 				<script>
-				function copy() {
-					var inp = document.createElement('input');
-            		document.body.appendChild(inp)
-            		inp.value = document.getElementById("copytext").innerHTML;
-					var element = document.getElementById("foo");
-					setTimeout(function () {
-						element.classList.toggle("mystyle");
-					}, 000);
-            		setTimeout(function () {
-						element.classList.toggle("mystyle");
-					}, 2000);
-					inp.select();
-            		document.execCommand('copy', false);
-            		inp.remove();
-				}
+					function copy() {
+						var inp = document.createElement('input');
+						document.body.appendChild(inp)
+						inp.value = document.getElementById("copytext").innerHTML;
+						var element = document.getElementById("foo");
+						setTimeout(function () {
+							element.classList.toggle("mystyle");
+						}, 000);
+						setTimeout(function () {
+							element.classList.toggle("mystyle");
+						}, 2000);
+						inp.select();
+						document.execCommand('copy', false);
+						inp.remove();
+					}
 				</script>
 				<?php
                 foreach ($profiledetails1 as $value) {
                     $frienddetails = mysqli_query($con,"SELECT * FROM users WHERE username='". $value ."'");
                     $friend = mysqli_fetch_array($frienddetails);
-                    // print_r($friend);
+                    
                     $link = 'friendprofile.php?friendr='. $friend["username"] .'';
                     echo "<div class='listitem'><img src='". $friend["profilepic"] ."' alt='no image'><a href='$link'>". $friend["username"] ."</a></div>";
                 }
@@ -386,21 +399,6 @@ require "views/friendprofile.php";
 
 	</script>
 	<section>
-		<script>
-			function toggle <?php echo $id; ?> () {
-
-				var target = $(event.target);
-				if (!target.is("a")) {
-					var element = document.getElementById("toggleComment<?php echo $id; ?>");
-
-					if (element.style.display == "block")
-						element.style.display = "none";
-					else
-						element.style.display = "block";
-				}
-			}
-		</script>
-
 		<?php
 
   $str = "";

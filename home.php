@@ -85,18 +85,42 @@ require "views/home.php";
       ?>
 		</div>
 	</div>
+
 	<div class="postupload" id="open">
 		<div class="inputBox">
 			<form action="home.php" method="post" enctype="multipart/form-data">
 				<h1>New Post</h1>
-				<input type="submit" name="post" value="Post">
-				<input type="file" name="image" placeholder="image" required>
-				<textarea name="text" placeholder="write your post...." required></textarea>
-				<p><?php echo $sucess ?></p>
+				<div>
+					<div>
+						<input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
+							style="display: none;" required>
+						<p id="no" style="text-align:center;"><img id="image"></p>
+					</div>
+					<p style="text-align:center;font-size:25px;font-weight:900"><label for="file"
+							class="forlable">UPLOAD IMAGE</label></p>
+				</div>
+
+				<div class="popp">
+					<textarea name="text" placeholder="write your post...." required></textarea>
+					<input type="submit" name="post" value="Post">
+				</div>
+
 			</form>
 			<button class="button" onclick='m1Function()'><i class='far fa-times-circle'></i></button>
 		</div>
 	</div>
+
+
+
+	<script>
+		var loadFile = function (event) {
+			var image = document.getElementById('image');
+			image.src = URL.createObjectURL(event.target.files[0]);
+			image.style.width = "300px";
+			image.style.height = "200px";
+			document.getElementById("down").style.display = "block";
+		};
+	</script>
 
 	<div class="head">
 		<div class="pic">
