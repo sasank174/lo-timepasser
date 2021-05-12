@@ -5,11 +5,13 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    color: #666;
 }
 
 #flip {
     text-align: center;
     background: #666;
+    color: white;
 }
 
 .users {
@@ -165,4 +167,43 @@ tr:nth-child(even) {
     position: relative;
     overflow: hidden;
     max-height: 250px;
+}
+
+.delete {
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    float: right;
+    color: #666;
+    text-decoration: none;
+    font-size: 25px;
+    transition: 0.5s all;
+}
+
+.delete:hover {
+    font-size: 30px;
+    background: #666;
+    color: white;
+    padding: 10px;
+}
+
+.haha{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.haha img{
+    margin-right: 20px;
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+.haha a{
+    color: #666;
+    font-size: 30px;
+    text-decoration: none;
 }

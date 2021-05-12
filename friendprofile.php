@@ -17,6 +17,9 @@ require "views/friendprofile.php";
 	<script src="public/js/search.js" charset="utf-8"></script>
 	<title>Home</title>
 	<style>
+		.foo{
+			display: none;
+		}
 		.mystyle {
 			position: fixed;
 			display: flex;
@@ -24,8 +27,7 @@ require "views/friendprofile.php";
 			align-items: center;
 			width: 100%;
 			height: 100vh;
-			background: yellow;
-			z-index: 9999999;
+			z-index: 999999999999;
 			background: rgba(255, 255, 255, 0.75);
 			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 			backdrop-filter: blur(4px);
@@ -222,7 +224,7 @@ require "views/friendprofile.php";
 </head>
 
 <body>
-	<div id="foo" style="display: none;">
+	<div id="foo" class="foo">
 		<h1 id="dis">Copied to Clipboard</h1>
 	</div>
 
@@ -344,7 +346,7 @@ require "views/friendprofile.php";
 						<div id="livesearch"></div>
 					</div>
 				</form>
-				<!-- <iframe src='search.php'></iframe> -->
+				
 			</div>
 			<div class="list">
 				<h2 style="text-align: center;padding-top:10px;"><?php echo $_GET['friendr']; ?> Friends
@@ -357,7 +359,7 @@ require "views/friendprofile.php";
 							?>
 							<p>
 								<img src="<?php echo $qr; ?>" width="200px" height="200px"></p>
-							<p id="shareoptions"><a><i onclick="copy();" class="far fa-copy"></i></a><a
+							<p id="shareoptions"><a href="#" onclick="copy();"><i class="far fa-copy"></i></a><a
 									href="https://api.whatsapp.com/send?text=<?php echo $share; ?>"><i
 										class="fab fa-whatsapp"></i></a></p>
 							<p id="copytext"><?php echo $share; ?></p>

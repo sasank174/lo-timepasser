@@ -140,7 +140,17 @@ require "views/adminpanel.php";
     </script>
 
 
-    <div id="myfirstchart"></div>
+	<?php
+	if(isset($_GET['analysis'])) {
+		$query2 = "SELECT * FROM users WHERE username = '$x'";
+    	$result2 = mysqli_query($con,$query2);
+		$row2 = mysqli_fetch_array($result2);
+		// print_r($row2);
+		echo "<div class='haha'><img src='".$row2["profilepic"]."' alt='img'>
+		<a>".$row2['username']."</a></div>";
+	}
+	?>
+	<div id="myfirstchart"></div>
     <script>
         new Morris.Bar({
             element: 'myfirstchart',
