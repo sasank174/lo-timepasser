@@ -1,6 +1,6 @@
 <?php
 require "base.php";
-// require "views/home.php";
+
 ?>
 
     <?php

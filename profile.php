@@ -61,7 +61,6 @@ require "views/profile.php";
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            /* background: white; */
             z-index: 9999999;
             background: rgba(255, 255, 255, 0.7);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -237,7 +236,7 @@ require "views/profile.php";
 
         <?php
 
-  $str = ""; //String to return
+  $str = "";
   $data_query = mysqli_query($con, "SELECT * FROM posts ORDER BY id DESC");
 
     while($row = mysqli_fetch_array($data_query)) {
@@ -266,7 +265,7 @@ require "views/profile.php";
         ";
 
       }
-    } //End while loop
+    }
 
 
   echo $str;

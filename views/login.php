@@ -3,7 +3,6 @@
 $username = "";
 $password = "";
 $error_array = array();
-// ===============check post=================
 
 if (isset($_GET["userd"]) ) {
     $userd = $_GET["userd"];
@@ -24,8 +23,6 @@ if (isset($_POST["login"])) {
     $password = md5($_POST["password"]);
 
     $_SESSION["username"] = $username;
-
-    // ================validate================
 
     $check = mysqli_query($con,"SELECT * FROM users WHERE username='$username'");
     

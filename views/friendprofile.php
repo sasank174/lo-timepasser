@@ -47,8 +47,7 @@ if (isset($_POST["post"])) {
     $target = "./public/images/posts/".$newfilename;
 
     $image = $_FILES['image']['name'];
-
-    // $target = "public/images/posts/".basename($_FILES['image']['name']);
+    
     $text = $_POST["text"];
     $time = date("Y-m-d H:i:s");
     $image = $_FILES['image']['name'];

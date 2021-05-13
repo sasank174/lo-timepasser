@@ -56,7 +56,6 @@ require "views/friendprofile.php";
 		}
 
 		.dropbtn {
-			/* background-color: #4CAF50; */
 			color: white;
 			padding: 16px;
 			font-size: 16px;
@@ -100,7 +99,6 @@ require "views/friendprofile.php";
 
 		.dropdown:hover .dropbtn {
 			color: #666;
-			/* background-color: #3e8e41; */
 		}
 
 

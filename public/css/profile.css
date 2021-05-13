@@ -166,7 +166,6 @@ section {
 
 .edetails .edit {
     margin-top: 20px;
-    /* padding: 20px; */
 }
 
 .edetails .edit input {
@@ -232,9 +231,6 @@ section {
     border-radius: 50%;
     border: none;
 }
-
-
-/* ====================================================================== */
 
 .post {
     display: inline-block;

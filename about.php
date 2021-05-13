@@ -198,11 +198,6 @@
             text-decoration: underline;
         }
 
-        /* .active {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-        } */
-
         .header .logo:hover {
             text-decoration: none;
         }

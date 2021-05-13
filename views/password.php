@@ -5,7 +5,6 @@ $password = "";
 $password2 = "";
 $error_array = array();
 
-// ===============check post=================
 
 if (isset($_GET["userd"]) ) {
     $userd = $_GET["userd"];
@@ -38,8 +37,6 @@ if (isset($_POST["passwordchange"])) {
     'Reply-To: '.$from."\r\n" .
     'X-Mailer: PHP/' . phpversion();
     
-    
-    // ================validate================
     
     $check = mysqli_query($con,"SELECT * from users WHERE username='$username'");
     

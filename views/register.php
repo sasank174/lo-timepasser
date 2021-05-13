@@ -6,7 +6,6 @@ $password = "";
 $date = "";
 $error_array = array();
 
-// checking ===================================
 
 if (isset($_POST["register"])) {
     $username = $_POST["username"];

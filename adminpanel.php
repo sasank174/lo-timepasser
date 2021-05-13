@@ -112,20 +112,18 @@ require "views/adminpanel.php";
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-        // Load google charts
+
         google.charts.load('current', {
             'packages': ['corechart']
         });
         google.charts.setOnLoadCallback(drawChart);
 
-        // Draw the chart and set the chart values
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['username', 'Hours per Day'], 
                 <?php echo $information; ?>
             ]);
 
-            // Optional; add a title and set the width and height of the chart
             var options = {
                 'title': 'Users AVG Usage',
                 'width': 550,
@@ -133,7 +131,6 @@ require "views/adminpanel.php";
                 is3D: true,
             };
 
-            // Display the chart inside the <div> element with id="piechart"
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
             chart.draw(data, options);
         }
@@ -145,7 +142,7 @@ require "views/adminpanel.php";
 		$query2 = "SELECT * FROM users WHERE username = '$x'";
     	$result2 = mysqli_query($con,$query2);
 		$row2 = mysqli_fetch_array($result2);
-		// print_r($row2);
+        
 		echo "<div class='haha'><img src='".$row2["profilepic"]."' alt='img'>
 		<a>".$row2['username']."</a></div>";
 	}
