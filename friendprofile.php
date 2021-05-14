@@ -358,9 +358,9 @@ require "views/friendprofile.php";
 							<p>
 								<img src="<?php echo $qr; ?>" width="200px" height="200px"></p>
 							<p id="shareoptions"><a href="#" onclick="copy();"><i class="far fa-copy"></i></a><a
-									href="https://api.whatsapp.com/send?text=<?php echo $share; ?>"><i
+									href="https://web.whatsapp.com/send?text=<?php echo $share; ?>" target="_blank"><i
 										class="fab fa-whatsapp"></i></a></p>
-							<p id="copytext"><?php echo $share; ?></p>
+							<p id="copytext" style="display: none;"><?php echo $share; ?></p>
 						</div>
 					</span>
 				</h2>
